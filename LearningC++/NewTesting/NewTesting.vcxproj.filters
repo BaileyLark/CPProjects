@@ -45,5 +45,8 @@
     <ClCompile Include="Lambda.cpp">
       <Filter>Excl.</Filter>
     </ClCompile>
+    <ClCompile Include="Classes.cpp">
+      <Filter>Excl.</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

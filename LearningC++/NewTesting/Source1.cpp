@@ -70,8 +70,13 @@ int main(int argc, char* argv[]) // argc is the amount of command lines, argv[] 
 
 }
 
+
 void arrfunct(const std::array<int, 3>& a) {} // pass arrays by const reference
 int fnct() {};
+
+// ANONYMOUS OBJECTS // 
+int add(int a, int b) { return a + b; } // a+b is an anonymous object 
+int a{ add(5 + 3, 5) }; // anonymous object  
 
 // RECURSION // 
 void count(int counter) { count(counter - 1); }
