@@ -48,5 +48,8 @@
     <ClCompile Include="Classes.cpp">
       <Filter>Excl.</Filter>
     </ClCompile>
+    <ClCompile Include="16.cpp">
+      <Filter>Excl.</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
