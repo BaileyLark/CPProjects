@@ -1,13 +1,2 @@
-﻿  Testing.cpp
-C:\Users\Gamer\source\repos\NewTesting\NewTesting\Testing.cpp(7,33): warning C4838: conversion from 'int' to '_Ty' requires a narrowing conversion
-          with
-          [
-              _Ty=uint8_t
-          ]
-C:\Users\Gamer\source\repos\NewTesting\NewTesting\Testing.cpp(7,49): warning C4305: 'initializing': truncation from 'int' to '_Ty'
-          with
-          [
-              _Ty=uint8_t
-          ]
-C:\Users\Gamer\source\repos\NewTesting\NewTesting\Testing.cpp(7,33): warning C4309: 'initializing': truncation of constant value
-  NewTesting.vcxproj -> C:\Users\Gamer\source\repos\NewTesting\Debug\NewTesting.exe
+﻿  RPGmain.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\RPGGame\RPGmain.cpp': No such file or directory
