@@ -27,7 +27,6 @@ public:
 
 		Max = new_max;
 
-
 		if (Current > Max)
 			Current = Max;
 
