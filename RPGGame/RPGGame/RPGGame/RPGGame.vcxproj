@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Abilty.h" />
+    <ClInclude Include="Buff.h" />
     <ClInclude Include="playercharacter.h" />
     <ClInclude Include="statblock.h" />
     <ClInclude Include="pointwell.h" />

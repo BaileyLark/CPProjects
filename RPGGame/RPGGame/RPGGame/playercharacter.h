@@ -6,6 +6,7 @@
 #include "Abilty.h"
 #include <vector>
 #include <memory>
+#include <Buff.h>
 
 typedef std::uint64_t exptype; 
 typedef std::uint16_t leveltype;
@@ -210,4 +211,8 @@ public:
 	void gainEXP(exptype amt) { pcclass->gainEXP(amt); }
 	void takeDamage(welltype amt) { pcclass->HP->Increase(amt); }
 	void heal(welltype amt) { pcclass->HP->Reduce(amt); }
+
+	void ApplyBuff(Buff buff) {} {
+		pcclass->applyBuff(buff);
+	}
 };

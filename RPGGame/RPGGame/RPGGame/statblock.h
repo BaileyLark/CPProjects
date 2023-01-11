@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <Buff.h>
 typedef std::uint16_t stattype;
 
 class StatBlock {
@@ -18,6 +19,8 @@ public:
 	stattype getArmour() { return Armour; }
 	stattype getElementRes() { return ElementRes; }
 
+	std::vector<Buff> Buffs;
+	std::vector<Buff> DeBuffs;
 	//void setStrength(stattype s) { Strength = s; }
 
 	StatBlock() { 
