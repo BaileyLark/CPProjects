@@ -6,7 +6,7 @@
 #include "Abilty.h"
 #include <vector>
 #include <memory>
-#include <Buff.h>
+#include "Buff.h"
 
 typedef std::uint64_t exptype; 
 typedef std::uint16_t leveltype;
@@ -39,9 +39,12 @@ public:
 	virtual void LevelUp() = 0;
 	virtual std::string getClassName() = 0;
 
+
+
 	std::unique_ptr<PointWell> HP;  
 	std::unique_ptr<PointWell> MP;
 	std::vector<Ability> Abilities;
+
 
 	PlayerCharacterDelegate() : StatBlock(0u, 0u) {
 		CurrentLevel = 1u;
@@ -168,9 +171,6 @@ public:
 };
 
 
-
-
-
 class PlayerCharacter {
 private:
 	PlayerCharacterDelegate* pcclass;
@@ -202,17 +202,17 @@ public:
 		else 
 			return 0; }
 
-	stattype getStrength() { return pcclass->getStrength(); }
-	stattype getIntellect() { return pcclass->getIntellect(); }
-	stattype getAgility() { return pcclass->getAgility(); }
-	stattype getElementRes() { return pcclass->getElementRes(); }
+	stattype getStrength() { return pcclass->getBaseStrength(); }
+	stattype getIntellect() { return pcclass->getBaseIntellect(); }
+	stattype getAgility() { return pcclass->getBaseAgility(); }
+	stattype getElementRes() { return pcclass->getBaseElementRes(); }
 
 
 	void gainEXP(exptype amt) { pcclass->gainEXP(amt); }
 	void takeDamage(welltype amt) { pcclass->HP->Increase(amt); }
 	void heal(welltype amt) { pcclass->HP->Reduce(amt); }
 
-	void ApplyBuff(Buff buff) {} {
+	void ApplyBuff(Buff buff){
 		pcclass->applyBuff(buff);
 	}
 };

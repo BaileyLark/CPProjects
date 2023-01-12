@@ -1,51 +1,80 @@
 #pragma once
 #include <cstdint>
-#include <Buff.h>
+#include "Buff.h"
+
 typedef std::uint16_t stattype;
 
 class StatBlock {
 private:
-	stattype Strength;
-	stattype Intellect;
-	stattype Agility;
-	stattype Armour;
-	stattype ElementRes;
+	stattype BaseStrength;
+	stattype BaseIntellect;
+	stattype BaseAgility;
+	stattype BaseArmor;
+	stattype BaseElementRes;
+
+	stattype TotalStrengthFromBuffs = 0;
+	stattype TotalIntellectFromBuffs = 0;
+	stattype TotalAgilityFromBuffs = 0;
+	stattype TotalArmourFromBuffs = 0;
+	stattype TotalElementResFromBuffs = 0;
 
 public:
 
-	stattype getStrength() { return Strength; }
-	stattype getIntellect() { return Intellect; }
-	stattype getAgility() { return Agility; }
-	stattype getArmour() { return Armour; }
-	stattype getElementRes() { return ElementRes; }
+	stattype getBaseStrength() { return BaseStrength; }
+	stattype getBaseIntellect() { return BaseIntellect; }
+	stattype getBaseAgility() { return BaseAgility; }
+	stattype getBaseArmour() { return BaseArmor; }
+	stattype getBaseElementRes() { return BaseElementRes; }
 
-	std::vector<Buff> Buffs;
-	std::vector<Buff> DeBuffs;
-	//void setStrength(stattype s) { Strength = s; }
+	stattype getTotalStrength() { return BaseStrength + TotalStrengthFromBuffs; }
+	stattype getTotalIntellect() { return BaseIntellect + TotalIntellectFromBuffs;  }
+	stattype getTotalAgility() { return BaseAgility + TotalAgilityFromBuffs; }
+	stattype getTotalArmour() { return BaseArmor + TotalArmourFromBuffs; }
+	stattype getTotalElementRes() { return BaseElementRes; }
+
+
+	//void setStrength(stattype s) { BaseStrength = s; }
 
 	StatBlock() { 
-		Strength = (stattype)0u; 
-		Intellect = (stattype)0u; 
-		Armour = (stattype)0u;
-		ElementRes = (stattype)0u;
-		Agility = (stattype)0u;
+		BaseStrength = (stattype)0u; 
+		BaseIntellect = (stattype)0u; 
+		BaseArmor = (stattype)0u;
+		BaseElementRes = (stattype)0u;
+		BaseAgility = (stattype)0u;
 	}
 
 	// wont allow type conversion 
 	explicit StatBlock(stattype s = 1, stattype i = 1, stattype a = 1, stattype arm = 0u, stattype eleres = 0u) {
-		Strength = s;
-		Intellect = i;
-		Agility = a;
-		Armour = arm;
-		ElementRes = eleres;
+		BaseStrength = s;
+		BaseIntellect = i;
+		BaseAgility = a;
+		BaseArmor = arm;
+		BaseElementRes = eleres;
 	}
 
 protected: 
 	void increaseStats(stattype s=0, stattype i=0, stattype a=0, stattype arm=0, stattype eleres =0) {
-		Strength += s;
-		Intellect += i;
-		Agility += a;
-		ElementRes += eleres; 
-		Armour += arm; 
+		BaseStrength += s;
+		BaseIntellect += i;
+		BaseAgility += a;
+		BaseElementRes += eleres; 
+		BaseArmor += arm; 
+	}
+	
+	void AddNewBuff(Buff b) {
+		for (auto& buff : Buffs) {
+			if (b.Name == buff.Name) {
+				buff.Duration = b.Duration;
+				return;
+			}
+		}
+		Buffs.push_back(b);
+		recalculate_buffs();
+	}
+
+	std::vector<Buff> Buffs;
+private:
+	void recalculate_buffs() {
+
 	}
 };
